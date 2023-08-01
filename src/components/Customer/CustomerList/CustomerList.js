@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 
 function CustomerList() {
   const [data, setData] = useState([]);
@@ -10,10 +12,17 @@ function CustomerList() {
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
+
+
   return (
+    <>
+
+<Link to='/form'>
+    <button className='btn btn-primary float-start' style={{marginTop : "5px"}}>New Customer</button>
+    </Link>
     <div className="container">
       <table className="table">
-        
+
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -38,6 +47,7 @@ function CustomerList() {
         </tbody>
       </table>
     </div>
+    </>
   );
 }
 
