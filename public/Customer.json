@@ -1,0 +1,26 @@
+[
+    {
+        "name":"Infosys",
+        "website":"www.infosys.com",
+        "ceo":"Uknown",
+        "employees":"200000",
+        "year":"1995",
+        "turnover":"100000000"
+    },
+    {
+        "name":"TCS",
+        "website":"www.tcs.com",
+        "ceo":"Uknown",
+        "employees":"300000",
+        "year":"1995",
+        "turnover":"200000000"
+    },
+    {
+        "name": "Accenture",
+        "website": "www.accenture.com",
+        "ceo": "Uknown",
+        "employees": "2330894",
+        "year": "1878",
+        "turnover": "53000000"
+    }
+]
