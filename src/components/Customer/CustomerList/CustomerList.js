@@ -13,6 +13,7 @@ function CustomerList() {
   return (
     <div className="container">
       <table className="table">
+        
         <thead>
           <tr>
             <th scope="col">Name</th>
