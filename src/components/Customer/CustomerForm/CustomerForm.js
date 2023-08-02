@@ -21,7 +21,7 @@ function CustomerForm() {
         navigate("/")
       })
       .catch((error) => {
-        console.error("Error while submitting the form:", error);
+        console.error("Error while submitting the form: ", error);
       });
     console.log(formData)
   }
