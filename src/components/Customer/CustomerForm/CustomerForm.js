@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 
 function CustomerForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    website: '',
-    turnover: 0,
-    employees: 0,
-    ceo: '',
-    establishedIn: 0,
-  });
+  const [formData, setFormData] = useState({});
+  const navigate = useNavigate()
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const handleFormSubmit = () => {
+    fetch("http://localhost:4000/api/customer", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json', 
+      },
+    })
+      .then((res) => {
+        return res.json
+      })
+      .then((res) => {
+        console.log(res)
+        navigate("/")
+      })
+      .catch((error) => {
+        console.error("Error while submitting the form:", error);
+      });
+    console.log(formData)
+  }
 
-  const handleSubmit = () => {
-    console.log(formData);
-    
-  };
 
   return (
     <div className="container">
@@ -30,11 +34,12 @@ function CustomerForm() {
           Name
         </label>
         <input
+          onChange={(e) => {
+            formData.name = e.target.value
+            setFormData(formData)
+          }}
           type="text"
-          name="name"
-          value={formData.name}
           className="form-control"
-          onChange={handleChange}
         />
       </div>
       <div className="mb-3">
@@ -42,11 +47,12 @@ function CustomerForm() {
           Website
         </label>
         <input
+          onChange={(e) => {
+            formData.website = e.target.value
+            setFormData(formData)
+          }}
           type="text"
-          name="website"
-          value={formData.website}
           className="form-control"
-          onChange={handleChange}
         />
       </div>
       <div className="mb-3">
@@ -54,11 +60,12 @@ function CustomerForm() {
           Turnover
         </label>
         <input
+          onChange={(e) => {
+            formData.turnover = e.target.value
+            setFormData(formData)
+          }}
           type="number"
-          name="turnover"
-          value={formData.turnover}
           className="form-control"
-          onChange={handleChange}
         />
       </div>
       <div className="mb-3">
@@ -66,11 +73,12 @@ function CustomerForm() {
           No Of Employees
         </label>
         <input
+          onChange={(e) => {
+            formData.employees = e.target.value
+            setFormData(formData)
+          }}
           type="number"
-          name="employees"
-          value={formData.employees}
           className="form-control"
-          onChange={handleChange}
         />
       </div>
       <div className="mb-3">
@@ -78,11 +86,12 @@ function CustomerForm() {
           CEO
         </label>
         <input
+          onChange={(e) => {
+            formData.ceo = e.target.value
+            setFormData(formData)
+          }}
           type="text"
-          name="ceo"
-          value={formData.ceo}
           className="form-control"
-          onChange={handleChange}
         />
       </div>
       <div className="mb-3">
@@ -90,14 +99,15 @@ function CustomerForm() {
           Established In
         </label>
         <input
+          onChange={(e) => {
+            formData.establisheIn = e.target.value
+            setFormData(formData)
+          }}
           type="number"
-          name="establishedIn"
-          value={formData.establishedIn}
           className="form-control"
-          onChange={handleChange}
         />
       </div>
-      <button className="btn btn-primary float-end" type="button" onClick={handleSubmit}>
+      <button className="btn btn-primary float-end" type="button" onClick={handleFormSubmit}>
         Create New Customer
       </button>
     </div>
