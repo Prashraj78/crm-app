@@ -1,113 +1,129 @@
-import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 function CustomerForm() {
-  const [formData, setFormData] = useState({});
-  const navigate = useNavigate()
+  const [customer, setCustomer] = useState({});
+  // useParams allows access to route parameters.
+  const { customerName } = useParams();
+  // console.log(customerName);
 
-  const handleFormSubmit = () => {
+  if (customerName) {
+    fetch("http://localhost:4000/api/customer")
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        let result = res.find((c) => c.name === customerName);
+        if (result) {
+          setCustomer(result);
+        }
+      });
+  }
+
+  const navigate = useNavigate();
+
+  function handleFormSubmit() {
+    console.log(customer);
     fetch("http://localhost:4000/api/customer", {
       method: "POST",
-      body: JSON.stringify(formData),
+      body: JSON.stringify(customer),
       headers: {
-        'Content-Type': 'application/json', 
+        "Content-Type": "application/json",
       },
     })
       .then((res) => {
-        return res.json
+        return res.json();
       })
       .then((res) => {
-        console.log(res)
-        navigate("/")
-      })
-      .catch((error) => {
-        console.error("Error while submitting the form: ", error);
+        console.log(res);
+        navigate("/");
       });
-    console.log(formData)
   }
-
 
   return (
     <div className="container">
       <div className="mb-3">
-        <label htmlFor="name" className="form-label">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
           Name
         </label>
         <input
+          value={customer.name}
           onChange={(e) => {
-            formData.name = e.target.value
-            setFormData(formData)
+            customer.name = e.target.value;
+            setCustomer(customer);
           }}
           type="text"
-          className="form-control"
-        />
+          className="form-control"></input>
       </div>
       <div className="mb-3">
-        <label htmlFor="website" className="form-label">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
           Website
         </label>
         <input
+          value={customer.website}
           onChange={(e) => {
-            formData.website = e.target.value
-            setFormData(formData)
+            customer.website = e.target.value;
+            setCustomer(customer);
           }}
           type="text"
-          className="form-control"
-        />
+          className="form-control"></input>
       </div>
       <div className="mb-3">
-        <label htmlFor="turnover" className="form-label">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
           Turnover
         </label>
         <input
+          value={customer.turnover}
           onChange={(e) => {
-            formData.turnover = e.target.value
-            setFormData(formData)
+            customer.turnover = e.target.value;
+            setCustomer(customer);
           }}
           type="number"
-          className="form-control"
-        />
+          className="form-control"></input>
       </div>
       <div className="mb-3">
-        <label htmlFor="employees" className="form-label">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
           No Of Employees
         </label>
         <input
+          value={customer.employees}
           onChange={(e) => {
-            formData.employees = e.target.value
-            setFormData(formData)
+            customer.employees = e.target.value;
+            setCustomer(customer);
           }}
           type="number"
-          className="form-control"
-        />
+          className="form-control"></input>
       </div>
       <div className="mb-3">
-        <label htmlFor="ceo" className="form-label">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
           CEO
         </label>
         <input
+          value={customer.ceo}
           onChange={(e) => {
-            formData.ceo = e.target.value
-            setFormData(formData)
+            customer.ceo = e.target.value;
+            setCustomer(customer);
           }}
           type="text"
-          className="form-control"
-        />
+          className="form-control"></input>
       </div>
       <div className="mb-3">
-        <label htmlFor="establishedIn" className="form-label">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
           Established In
         </label>
         <input
+          value={customer.year}
           onChange={(e) => {
-            formData.establisheIn = e.target.value
-            setFormData(formData)
+            customer.year = e.target.value;
+            setCustomer(customer);
           }}
           type="number"
-          className="form-control"
-        />
+          className="form-control"></input>
       </div>
-      <button className="btn btn-primary float-end" type="button" onClick={handleFormSubmit}>
+      <button
+        onClick={handleFormSubmit}
+        className="btn btn-primary float-end"
+        type="button">
         Create New Customer
       </button>
     </div>
