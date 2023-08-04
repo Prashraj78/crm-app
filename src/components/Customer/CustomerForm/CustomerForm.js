@@ -144,6 +144,6 @@ function CustomerForm() {
 
     </div>
   );
-} 
+}   
 
 export default CustomerForm;
