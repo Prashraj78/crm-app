@@ -1,16 +1,21 @@
 // import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CustomerList from './components/Customer/CustomerList/CustomerList';
-
-import Customer from './pages/Customer/Customer';
+import CustomerForm from './components/Customer/CustomerForm/CustomerForm';
 
 function App() {
   return (
-    <>
-    <Customer />
-    <CustomerList/>
-    
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<CustomerList />}>
+        </Route>
+        <Route path='form' element={<CustomerForm />}>
+        </Route>
+        <Route path='form/:customerName' element={<CustomerForm />}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
