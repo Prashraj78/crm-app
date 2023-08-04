@@ -26,7 +26,7 @@ function CustomerList() {
 
   return (
     <div className="container">
-      <button onClick={handleNewCustomerClick} className="btn btn-success">
+      <button onClick={handleNewCustomerClick} className="btn btn-success mt-3">
         New Customer
       </button>
 
@@ -36,7 +36,7 @@ function CustomerList() {
         </div>
       )}
       {customers.length > 0 && (
-        <table className="table">
+        <table className="table mt-3">
           <thead>
             <tr>
               <th scope="col">Name</th>

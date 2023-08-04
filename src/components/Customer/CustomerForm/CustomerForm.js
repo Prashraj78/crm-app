@@ -1,32 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 function CustomerForm() {
-  const [customer, setCustomer] = useState({});
-  // useParams allows access to route parameters.
+  // const [customer, setCustomer] = useState({});
+  const [updateCustomer, setUpdateCustomer] = useState({});
   const { customerName } = useParams();
-  // console.log(customerName);
 
-  if (customerName) {
-    fetch("http://localhost:4000/api/customer")
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        let result = res.find((c) => c.name === customerName);
-        if (result) {
-          setCustomer(result);
-        }
-      });
-  }
+
+
+
+
+  // console.log(customerName);
+  useEffect(() => {
+    if (customerName) {
+      fetch("http://localhost:4000/api/customer")
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          let result = res.find((c) => c.name === customerName);
+          if (result) {
+            setUpdateCustomer(result);
+          }
+        });
+    }
+  }, []);
+ 
+
 
   const navigate = useNavigate();
 
+
+  const backToList = () => {
+    navigate("/")
+  }
+
   function handleFormSubmit() {
-    console.log(customer);
+    console.log(updateCustomer);
     fetch("http://localhost:4000/api/customer", {
       method: "POST",
-      body: JSON.stringify(customer),
+      body: JSON.stringify(updateCustomer),
       headers: {
         "Content-Type": "application/json",
       },
@@ -39,18 +52,18 @@ function CustomerForm() {
         navigate("/");
       });
   }
+  // console.log(customer)/
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">
           Name
         </label>
         <input
-          value={customer.name}
-          onChange={(e) => {
-            customer.name = e.target.value;
-            setCustomer(customer);
+          value={updateCustomer.name}
+          onInput={(e) => {
+            setUpdateCustomer({ name: e.target.value });
           }}
           type="text"
           className="form-control"></input>
@@ -60,10 +73,9 @@ function CustomerForm() {
           Website
         </label>
         <input
-          value={customer.website}
-          onChange={(e) => {
-            customer.website = e.target.value;
-            setCustomer(customer);
+          value={updateCustomer.website}
+          onInput={(e) => {
+            setUpdateCustomer({ website: e.target.value });
           }}
           type="text"
           className="form-control"></input>
@@ -73,10 +85,9 @@ function CustomerForm() {
           Turnover
         </label>
         <input
-          value={customer.turnover}
-          onChange={(e) => {
-            customer.turnover = e.target.value;
-            setCustomer(customer);
+          value={updateCustomer.turnover}
+          onInput={(e) => {
+            setUpdateCustomer({ turnover: e.target.value });
           }}
           type="number"
           className="form-control"></input>
@@ -86,10 +97,9 @@ function CustomerForm() {
           No Of Employees
         </label>
         <input
-          value={customer.employees}
-          onChange={(e) => {
-            customer.employees = e.target.value;
-            setCustomer(customer);
+          value={updateCustomer.employees}
+          onInput={(e) => {
+            setUpdateCustomer({ employees: e.target.value });
           }}
           type="number"
           className="form-control"></input>
@@ -99,10 +109,9 @@ function CustomerForm() {
           CEO
         </label>
         <input
-          value={customer.ceo}
-          onChange={(e) => {
-            customer.ceo = e.target.value;
-            setCustomer(customer);
+          value={updateCustomer.ceo}
+          onInput={(e) => {
+            setUpdateCustomer({ ceo: e.target.value });
           }}
           type="text"
           className="form-control"></input>
@@ -112,10 +121,9 @@ function CustomerForm() {
           Established In
         </label>
         <input
-          value={customer.year}
-          onChange={(e) => {
-            customer.year = e.target.value;
-            setCustomer(customer);
+          value={updateCustomer.year}
+          onInput={(e) => {
+            setUpdateCustomer({ year: e.target.value });
           }}
           type="number"
           className="form-control"></input>
@@ -126,6 +134,14 @@ function CustomerForm() {
         type="button">
         Create New Customer
       </button>
+
+      <button type="button" className="btn btn-outline-warning" style={{ marginLeft: '10px' }}
+        onClick={backToList}
+      >Back to List</button>
+
+
+
+
     </div>
   );
 }
