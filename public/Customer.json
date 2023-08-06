@@ -14,13 +14,5 @@
         "employees":"300000",
         "year":"1995",
         "turnover":"200000000"
-    },
-    {
-        "name": "Accenture",
-        "website": "www.accenture.com",
-        "ceo": "Uknown",
-        "employees": "2330894",
-        "year": "1878",
-        "turnover": "53000000"
     }
 ]

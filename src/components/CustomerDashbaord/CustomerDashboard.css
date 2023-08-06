@@ -1,0 +1,51 @@
+
+
+.dashboard{
+    display: flex;
+    justify-content: space-around;
+    height: 170px;
+    padding: 4px;
+}
+
+.tile{
+    height: 140px;
+    width: 220px;
+    border: 1px solid lightblue;
+    border-radius: 3px;
+}
+
+.tile-all{
+    background-color: black;
+    color: white;
+}
+
+.tile-new{
+    background-color: #0d6efd;
+    color: white;
+}
+
+.tile-accepted{
+    background-color: #198754;
+    color: white;
+}
+
+.tile-rejected{
+    background-color: #dc3545;
+    color: white;
+}
+
+.tile-text{
+    font-size: 42px;
+    padding: 6px;
+    margin-bottom: 2px !important;
+}
+
+hr{
+    margin: 0;
+}
+
+.tile-value{
+    text-align: end;
+    font-size: x-large;
+    padding: 6px 24px;
+}
