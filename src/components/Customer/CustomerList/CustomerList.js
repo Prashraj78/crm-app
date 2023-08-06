@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 
+
 function CustomerList() {
   // Storing data in state
   const [customers, setCustomers] = useState([]);
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     fetch("http://localhost:4000/api/customer")
@@ -17,6 +19,7 @@ function CustomerList() {
 
   function handleNewCustomerClick() {
     navigate("form");
+    
   }
 
   function handleEditClick(name) {
