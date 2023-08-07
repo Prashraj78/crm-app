@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 function NavBar(){
+  
 
   const [isLoggedIn, setLoggedInStatus]=useState(false);
   const navigate = useNavigate();

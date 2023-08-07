@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SecuredRoutes(props){
+    
     const [loggedIn, setLogin] = useState(false);
 
     useEffect(()=>{

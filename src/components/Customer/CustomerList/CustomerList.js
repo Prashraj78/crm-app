@@ -7,7 +7,7 @@ import CustomerDashboard from "../../CustomerDashbaord/CustomerDashboard";
 
 
 function CustomerList() {
-  // Storing data in state
+
   console.log("rendering");
   const [customers, setCustomers] = useState([]);
   const [filteredCustomers, setFilteredCustomers]=useState([]);

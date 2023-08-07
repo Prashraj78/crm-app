@@ -3,6 +3,7 @@ import {Sidebar} from "primereact/sidebar";
 import "./SideMenu.css";
 
 function SideMenu(){
+    
     return (
         <div>
             <Sidebar visible="true">
