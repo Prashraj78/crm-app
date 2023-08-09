@@ -24,9 +24,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <div>
-       {/* <NavBar /> */}
+     
        
      <BrowserRouter>
+     <NavBar />
       <Routes>
         <Route path='/' element={
         <SecuredRoutes>
@@ -67,8 +68,8 @@ root.render(
         </SecuredRoutes>
         }>
         </Route>
-        {/* <Route path='/signup' element={<SignUp />}>
-        </Route> */}
+        <Route path='/signup' element={<SignUp />}>
+        </Route>
         <Route path='/signin' element={<SignIn />}>
         </Route>
         <Route path='form' element={

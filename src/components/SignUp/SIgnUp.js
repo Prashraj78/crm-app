@@ -9,7 +9,7 @@ function SignUp() {
   function handleRegister() {
     console.log(user);
     // fetch returns a promise.
-    fetch(process.env.REACT_APP_APIURL+"user/signup", {
+    fetch("http://localhost:4000/api/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function SignUp() {
   }
 
   return (
-    <div className="signup-container">
+    <div className="container">
       <div className="left">
         <img
           src="https://img.freepik.com/premium-vector/crm-icons-customer-relationship-management-vector-infographics-template_116137-3703.jpg"

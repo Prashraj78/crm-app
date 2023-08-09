@@ -11,7 +11,7 @@ function SignIn() {
   const handleLoginClick = () => {
     console.log(loginDetails);
     setInvalidCreds(false);
-    fetch(process.env.REACT_APP_APIURL+"user/signin",{
+    fetch("http://localhost:4000/api/user/signin",{
       method:"POST",
       body:JSON.stringify(loginDetails),
       headers:{
@@ -35,7 +35,7 @@ function SignIn() {
   }
 
   return (
-    <div className="signincontainer">
+    <div className="container">
       <div className="left">
         <img
           src="https://img.freepik.com/premium-vector/crm-icons-customer-relationship-management-vector-infographics-template_116137-3703.jpg"

@@ -10,7 +10,7 @@ function NavBar(){
 
   useEffect(()=>{
     const value = localStorage.getItem("loggedIn");
-    if(value && value=="true"){
+    if(value && value==="true"){
       setLoggedInStatus(true);
     }else{
       setLoggedInStatus(false);

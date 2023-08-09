@@ -8,25 +8,27 @@ function CustomerForm() {
   const { customerName } = useParams();
   console.log(customerName);
 
-
-  const navigate = useNavigate();
   useEffect(() => {
     if (customerName) {
-      fetch(process.env.REACT_APP_APIURL+"customer/"+customerName)
+      fetch("http://localhost:4000/api/customer")
         .then((res) => {
           return res.json();
         })
         .then((res) => {
-          setUpdateCustomer(res);
+          let result = res.find((c) => c.name === customerName);
+          if (result) {
+            setUpdateCustomer(result);
+          }
         });
     }
   }, []);
 
-  function handleFormSubmit() {
+  const navigate = useNavigate();
 
+  function handleFormSubmit() {
     console.log(customerToUpdate);
-    fetch(process.env.REACT_APP_APIURL+"customer", {
-      method: customerName ? "PUT" : "POST",
+    fetch("http://localhost:4000/api/customer", {
+      method: "POST",
       body: JSON.stringify(customerToUpdate),
       headers: {
         "Content-Type": "application/json",
@@ -50,6 +52,7 @@ function CustomerForm() {
             Name
           </label>
           <input
+            readOnly="true"
             value={customerToUpdate.name}
             onInput={(e) => {
               let obj = { ...customerToUpdate };
@@ -88,26 +91,6 @@ function CustomerForm() {
             type="number"
             className="form-control"></input>
         </div>
-
-        <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            Status
-          </label>
-          <select 
-            onChange={
-              (e)=>{
-                let obj = { ...customerToUpdate };
-                obj.status = e.target.value;
-                setUpdateCustomer(obj);
-              }
-            }
-          className="form-select">
-            <option value="New">New</option>
-            <option value="Accepted">Accepted</option>
-            <option value="Rejected">Rejected</option>
-          </select>
-        </div>
-        
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">
             No Of Employees
@@ -154,14 +137,7 @@ function CustomerForm() {
           onClick={handleFormSubmit}
           className="btn btn-primary float-end"
           type="button">
-           {
-            customerName &&
-           <span> Update Customer</span>
-           }
-            {
-            !customerName &&
-           <span> Create New Customer</span>
-           }
+          Create New Customer
         </button>
       </div>
     </div>

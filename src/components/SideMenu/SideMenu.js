@@ -5,7 +5,7 @@ import "./SideMenu.css";
 function SideMenu(){   
     return (
         <div>
-            <Sidebar visible="true">
+            <Sidebar visible={true}>
             <div className="menus">
                 <p>
                     <a className="navbar-brand" href="/">Home</a>
