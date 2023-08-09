@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import NavBar from "../../Navbar/Navbar";
 
 function CustomerForm() {
   const [customerToUpdate, setUpdateCustomer] = useState({});
@@ -45,7 +44,6 @@ function CustomerForm() {
 
   return (
     <div>
-      <NavBar />
       <div className="container">
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">

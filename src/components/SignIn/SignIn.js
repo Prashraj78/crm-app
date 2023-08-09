@@ -20,9 +20,9 @@ function SignIn() {
     }).then(
       (res)=>{
         console.log(res);
-        if(res.status==400){
+        if(res.status===400){
           setInvalidCreds(true);
-        }else if(res.status==200){
+        }else if(res.status===200){
           console.log("200");
           localStorage.setItem("loggedIn", "true");
           navigate("/");
