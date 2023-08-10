@@ -5,6 +5,13 @@ hr{
 
 .container{
     margin: 36px !important;
+    margin-left: 80px !important;
+    background-color: rgb(204, 228, 249);
+}
+
+
+.add{
+    margin-bottom: 5px;
 }
 
 .st_green{

@@ -15,7 +15,12 @@ function NavBar() {
     } else {
       setLoggedInStatus(false);
     }
+ 
   });
+
+
+
+
 
   const handleLogOutClick = () => {
     localStorage.removeItem("loggedIn");

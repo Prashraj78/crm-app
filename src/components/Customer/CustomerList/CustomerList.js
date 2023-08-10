@@ -36,12 +36,15 @@ function CustomerList() {
     navigate("/form/" + name);
   }
 
+  
+
+
   return (
     <div>
       {/* <NavBar /> */}
       <div className="container">
 
-        <button onClick={handleNewCustomerClick} className="btn btn-success">
+        <button onClick={handleNewCustomerClick} className="btn btn-success add">
           New Customer
         </button>
 
