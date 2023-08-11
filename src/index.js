@@ -13,12 +13,12 @@ import SignIn from './components/SignIn/SignIn';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <BrowserRouter>
+    <BrowserRouter>
       <Routes>
         <Route path='/' element={
-        <SecuredRoutes>
-          <CustomerList />
-        </SecuredRoutes>
+          <SecuredRoutes>
+            <CustomerList />
+          </SecuredRoutes>
         }>
         </Route>
         <Route path='/signup' element={<SignUp />}>
@@ -26,14 +26,14 @@ root.render(
         <Route path='/signin' element={<SignIn />}>
         </Route>
         <Route path='form' element={
-         <SecuredRoutes>
+          <SecuredRoutes>
             <CustomerForm />
-        </SecuredRoutes>
-      }>
+          </SecuredRoutes>
+        }>
         </Route>
         <Route path='form/:customerName' element={<CustomerForm />}>
         </Route>
-      </Routes> 
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
