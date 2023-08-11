@@ -1,35 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import App from './App';
+import SecuredRoutes from "./components/SecuredRoutes/SecuredRoutes";
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CustomerList from './components/Customer/CustomerList/CustomerList';
 import CustomerForm from './components/Customer/CustomerForm/CustomerForm';
 import SignUp from './components/SignUp/SIgnUp';
 import SignIn from './components/SignIn/SignIn';
-import 'primereact/resources/themes/saga-blue/theme.css'; // Theme CSS
-import 'primereact/resources/primereact.min.css'; // PrimeReact CSS
-import 'primeicons/primeicons.css'; // PrimeIcons CSS
-import NavBar from './components/Navbar/Navbar';
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <NavBar />
+     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<CustomerList />}>
+        <Route path='/' element={
+        <SecuredRoutes>
+          <CustomerList />
+        </SecuredRoutes>
+        }>
         </Route>
         <Route path='/signup' element={<SignUp />}>
         </Route>
         <Route path='/signin' element={<SignIn />}>
         </Route>
-        <Route path='form' element={<CustomerForm />}>
+        <Route path='form' element={
+         <SecuredRoutes>
+            <CustomerForm />
+        </SecuredRoutes>
+      }>
         </Route>
         <Route path='form/:customerName' element={<CustomerForm />}>
         </Route>
-      </Routes>
+      </Routes> 
     </BrowserRouter>
   </React.StrictMode>
 );

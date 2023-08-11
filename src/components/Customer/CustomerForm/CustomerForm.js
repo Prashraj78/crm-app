@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import NavBar from "../../Navbar/Navbar";
 
 function CustomerForm() {
   const [customerToUpdate, setUpdateCustomer] = useState({});
   // useParams allows access to route parameters.
   const { customerName } = useParams();
   console.log(customerName);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (customerName) {
@@ -22,7 +25,6 @@ function CustomerForm() {
     }
   }, []);
 
-  const navigate = useNavigate();
 
   function handleFormSubmit() {
     console.log(customerToUpdate);
@@ -44,6 +46,7 @@ function CustomerForm() {
 
   return (
     <div>
+      <NavBar/>
       <div className="container">
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">

@@ -1,7 +1,7 @@
 import "./CustomerList.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import NavBar from "../../Navbar/Navbar";
+import NavBar from "../../Navbar/Navbar";
 
 function CustomerList() {
   // Storing data in state
@@ -36,20 +36,20 @@ function CustomerList() {
     navigate("/form/" + name);
   }
 
-  
+
 
 
   return (
     <div>
-      {/* <NavBar /> */}
+      <NavBar />
       <div className="container">
 
-        <button onClick={handleNewCustomerClick} className="btn btn-success add">
+        <button onClick={handleNewCustomerClick} className="btn btn-success">
           New Customer
         </button>
 
         {customers.length === 0 && (
-          <div className="alert alert-primary mt-3" role="alert">
+          <div class="alert alert-primary mt-3" role="alert">
             No Customers are available im system.
           </div>
         )}
