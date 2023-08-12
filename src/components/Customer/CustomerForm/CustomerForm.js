@@ -23,7 +23,7 @@ function CustomerForm() {
           }
         });
     }
-  }, []);
+  },[]);
 
 
   function handleFormSubmit() {
