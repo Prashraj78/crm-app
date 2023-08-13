@@ -53,7 +53,7 @@ function CustomerForm() {
             Name
           </label>
           <input
-            readOnly="true"
+            // readOnly="true"
             value={customerToUpdate.name}
             onInput={(e) => {
               let obj = { ...customerToUpdate };
