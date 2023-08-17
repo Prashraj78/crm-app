@@ -9,6 +9,7 @@ import CustomerList from './components/Customer/CustomerList/CustomerList';
 import CustomerForm from './components/Customer/CustomerForm/CustomerForm';
 import SignUp from './components/SignUp/SIgnUp';
 import SignIn from './components/SignIn/SignIn';
+import UserList from './components/User/UserList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,6 +29,12 @@ root.render(
         <Route path='form' element={
           <SecuredRoutes>
             <CustomerForm />
+          </SecuredRoutes>
+        }>
+        </Route>
+        <Route path='user' element={
+          <SecuredRoutes>
+           <UserList/>
           </SecuredRoutes>
         }>
         </Route>
