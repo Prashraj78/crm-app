@@ -37,7 +37,7 @@ function UserList(){
     {
         users.map(u=>
             <tr>
-            <td scope="row">{u.name}</td>
+            <td>{u.name}</td>
             <td>{u.email}</td>
             <td>{u.username}</td>
             <td>{u.isActive ? 'Yes' : 'No'}</td>

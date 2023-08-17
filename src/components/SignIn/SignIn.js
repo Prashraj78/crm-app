@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignIn.css";
+import NavBar from "../Navbar/Navbar";
 
 function SignIn() {
   const [loginDetails, setLoginDetails]=useState({});
@@ -35,6 +36,9 @@ function SignIn() {
   }
 
   return (
+    <>
+    <NavBar/>
+    
     <div className="signincontainer">
       <div className="left">
         <img
@@ -79,6 +83,7 @@ function SignIn() {
           value="Sign In"></input>
       </div>
     </div>
+    </>
   );
 }
 
