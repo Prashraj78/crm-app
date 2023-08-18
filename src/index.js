@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import SecuredRoutes from "./components/SecuredRoutes/SecuredRoutes";
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -10,6 +9,7 @@ import CustomerForm from './components/Customer/CustomerForm/CustomerForm';
 import SignUp from './components/SignUp/SIgnUp';
 import SignIn from './components/SignIn/SignIn';
 import UserList from './components/User/UserList';
+import UserForm from './components/User/UserForm/UserForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,19 +22,25 @@ root.render(
           </SecuredRoutes>
         }>
         </Route>
-        <Route path='/signup' element={<SignUp />}>
+        <Route path='/users' element={
+          <SecuredRoutes>
+            <UserList />
+          </SecuredRoutes>
+        }>
         </Route>
+        <Route path='/userForm' element={
+          <SecuredRoutes>
+            <UserForm />
+          </SecuredRoutes>
+        }>
+        </Route>
+        {/* <Route path='/signup' element={<SignUp />}>
+        </Route> */}
         <Route path='/signin' element={<SignIn />}>
         </Route>
         <Route path='form' element={
           <SecuredRoutes>
             <CustomerForm />
-          </SecuredRoutes>
-        }>
-        </Route>
-        <Route path='user' element={
-          <SecuredRoutes>
-           <UserList/>
           </SecuredRoutes>
         }>
         </Route>
