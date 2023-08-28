@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBar from "../Navbar/Navbar";
-import "./UserLIst.css";
+import "./UserList.css";
 
 function UserList(){
     // state is storage which when changes, 
@@ -18,6 +18,21 @@ function UserList(){
                 setUsers(parsedResult);
             })
     },[]);
+
+    function handleActivateClick(username){
+      fetch("http://localhost:4000/api/user/activate/"+username, {
+        method:"PUT"
+      }).then(res=> res.json())
+          .then(parsedResponse => setUsers(parsedResponse));
+    }
+
+    function handleDeActivateClick(username){
+      fetch("http://localhost:4000/api/user/deactivate/"+username, {
+        method:"PUT"
+      }).then(res=> res.json())
+          .then(parsedResponse => setUsers(parsedResponse));
+    }
+
 
     return(
         <div>
@@ -47,11 +62,15 @@ function UserList(){
             <td className="activeStatus">
             {
               !u.isActive && 
-            <button className="btn btn-primary">Activate</button>
+            <button 
+            onClick={()=>{handleActivateClick(u.username)}}
+            className="btn btn-primary">Activate</button>
             }
             {
               u.isActive && 
-            <button className="btn btn-danger">De-Activate</button>
+            <button 
+            onClick={()=>{handleDeActivateClick(u.username)}}
+            className="btn btn-danger">De-Activate</button>
             }
             
             </td>
