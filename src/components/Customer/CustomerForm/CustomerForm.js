@@ -8,8 +8,8 @@ function CustomerForm() {
   const { customerName } = useParams();
   console.log(customerName);
 
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   useEffect(() => {
     if (customerName) {
       fetch("http://localhost:4000/api/customer")
@@ -23,8 +23,7 @@ function CustomerForm() {
           }
         });
     }
-  },[]);
-
+  }, []);
 
   function handleFormSubmit() {
     console.log(customerToUpdate);
@@ -46,14 +45,13 @@ function CustomerForm() {
 
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div className="container">
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">
             Name
           </label>
           <input
-            // readOnly="true"
             value={customerToUpdate.name}
             onInput={(e) => {
               let obj = { ...customerToUpdate };
@@ -92,6 +90,26 @@ function CustomerForm() {
             type="number"
             className="form-control"></input>
         </div>
+
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
+            Status
+          </label>
+          <select 
+            onChange={
+              (e)=>{
+                let obj = { ...customerToUpdate };
+                obj.status = e.target.value;
+                setUpdateCustomer(obj);
+              }
+            }
+          className="form-select">
+            <option value="New">New</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+        
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">
             No Of Employees
