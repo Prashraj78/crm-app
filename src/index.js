@@ -34,8 +34,8 @@ root.render(
           </SecuredRoutes>
         }>
         </Route>
-        {/* <Route path='/signup' element={<SignUp />}>
-        </Route> */}
+        <Route path='/signup' element={<SignUp />}>
+        </Route>
         <Route path='/signin' element={<SignIn />}>
         </Route>
         <Route path='form' element={
